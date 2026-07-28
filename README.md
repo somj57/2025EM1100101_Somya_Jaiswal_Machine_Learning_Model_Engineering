@@ -1,3 +1,23 @@
+# Mini MLOps Project: Telco Customer Churn Prediction
+**Course Assignment:** Machine Learning Model Engineering  
+**Student Name:** Somya Jaiswal  
+**Student ID:** 2025EM1100101  
+
+---
+
+## 📌 Project Overview
+This repository implements an end-to-end production machine learning system for **Telco Customer Churn Prediction** (Binary Classification). 
+
+The goal is to predict whether a customer will churn (`1`) or stay (`0`) based on demographic, billing, and usage features. The system demonstrates key MLOps practices:
+* **Micro-batch data ingestion pipeline** with logging.
+* **Shared feature engineering module** to mitigate training-serving skew.
+* **Reproducible model training harness** with candidate-vs-baseline promotion gates.
+* **Containerized inference service** built with FastAPI.
+* **Data quality, drift detection, and retraining triggers**.
+
+---
+
+## Repository Structure
 ```text
 2025EM1100101_Somya_Jaiswal_Machine_Learning_Model_Engineering/
 └── mini-mlops-project/
