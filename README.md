@@ -1,3 +1,4 @@
+```text
 2025EM1100101_Somya_Jaiswal_Machine_Learning_Model_Engineering/
 └── mini-mlops-project/
     ├── data/                    # Generated locally
@@ -14,3 +15,4 @@
     │   └── monitor.py           # Drift detection
     ├── Dockerfile
     └── requirements.txt
+```
