@@ -36,3 +36,27 @@ The goal is to predict whether a customer will churn (`1`) or stay (`0`) based o
     ├── Dockerfile
     └── requirements.txt
 ```
+
+---
+
+## Terminals Output
+1. Initializing the Environment
+```text
+(base) somyajaiswal@somyas-MacBook-Air mini-mlops-project % pip install -r requirements.txt
+```
+
+2. Generating Initial Data
+```text
+(base) somyajaiswal@somyas-MacBook-Air mini-mlops-project % python src/generate_data.py
+Generated 1000 rows in data/telco_churn_historical.csv
+Generated 100 rows in data/telco_churn_daily_batch.csv
+```
+
+3. Training the models
+```text
+(base) somyajaiswal@somyas-MacBook-Air mini-mlops-project % python src/train.py
+Baseline AUC: 0.4441 | Candidate AUC: 0.5439
+Guardrail failed: Candidate rejected. Baseline retained.
+```
+
+
