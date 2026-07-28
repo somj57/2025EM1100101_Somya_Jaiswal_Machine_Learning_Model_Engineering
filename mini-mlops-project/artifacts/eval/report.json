@@ -1,0 +1,12 @@
+{
+    "model_version": "v1.0-baseline",
+    "baseline_metrics": {
+        "accuracy": 0.72,
+        "roc_auc": 0.44407242063492064
+    },
+    "candidate_metrics": {
+        "accuracy": 0.725,
+        "roc_auc": 0.5438988095238095
+    },
+    "promotion_decision": "v1.0-baseline"
+}

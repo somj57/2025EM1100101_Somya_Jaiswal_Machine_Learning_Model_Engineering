@@ -59,4 +59,21 @@ Baseline AUC: 0.4441 | Candidate AUC: 0.5439
 Guardrail failed: Candidate rejected. Baseline retained.
 ```
 
+4. Test Data Ingestion and Monitoring
+```text
+(base) somyajaiswal@somyas-MacBook-Air mini-mlops-project % python src/monitor.py
+--- Data Quality & Drift Monitor ---
+[QUALITY ALERT] Found 1 missing values in the new batch.
+Training Mean Charge: $69.72
+Batch Mean Charge: $76.07
+[STATUS] Data distribution is stable.
+
+--- Retraining Evaluation ---
+>>> ACTION: No retraining required today. <<<
+```
+```text
+(base) somyajaiswal@somyas-MacBook-Air mini-mlops-project % python src/ingest.py
+[2026-07-29 00:34:28.911325] Starting micro-batch ingestion...
+Ingested 100 new rows. Master dataset updated to 1100 rows.
+```
 
