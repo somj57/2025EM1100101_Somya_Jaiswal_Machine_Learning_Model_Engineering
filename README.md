@@ -77,3 +77,72 @@ Batch Mean Charge: $76.07
 Ingested 100 new rows. Master dataset updated to 1100 rows.
 ```
 
+---
+# Regression: House Prices Prediction 
+
+
+## Project Overview
+This project implements a production-ready Machine Learning pipeline for a **Regression** task: predicting house prices. Following the requirements for a full ML lifecycle, this notebook covers:
+
+*   **Data & Features:** Engineering non-trivial features and addressing training-serving skew.
+*   **Model Training:** Implementing a repeatable pipeline with baseline vs. candidate evaluation.
+*   **Serving:** Designing an inference pattern (FastAPI-ready).
+*   **Monitoring:** Planning for drift detection and retraining triggers.
+
+### Dataset
+We are using the [House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data) dataset from Kaggle.
+
+### Architecture Diagram
+```text
+graph TD
+    subgraph "Data Pipeline (Batch)"
+        A[Daily CSV Drops] --> B[Ingestion Script]
+        B --> C[(Raw Data Storage)]
+    end
+
+    subgraph "Training Pipeline"
+        C --> D[Data Split]
+        D --> E[Scikit-learn Pipeline\nFeature Eng + RF Model]
+        E --> F[Offline Evaluation\nBaseline vs Candidate]
+        F -- "If better" --> G[(Model Registry\nmodels/v1/)]
+    end
+
+    subgraph "Online Serving"
+        H[End User Web App] -->|JSON Input| I[FastAPI Endpoint /predict]
+        G -->|Load .joblib| I
+        I -->|Predicted Price| H
+    end
+
+    subgraph "Monitoring & MLOps"
+        I -->|Log Inputs/Outputs| J[Monitoring Logs]
+        J --> K[Drift Check Script]
+        K -- "Alert/Trigger" --> A
+    end
+```    
+
+### Project Structure
+```text
+house_price_ml_system/
+├── data/
+│   ├── raw/                 # Downloaded CSVs
+│   └── processed/           # Feature-engineered data
+├── models/
+│   └── v1/                  # Saved artifacts (.joblib, metrics.json)
+├── src/
+│   ├── ingest.py            # Data ingestion script
+│   ├── features.py          # Feature engineering logic
+│   ├── train.py             # Training & Evaluation pipeline
+│   ├── serve.py             # FastAPI application
+│   └── monitor.py           # Drift detection & retraining logic
+├── tests/
+│   └── test_api.py          # Latency & load testing script
+├── requirements.txt         
+├── Dockerfile               # (Optional but guarantees max marks)
+└── Design_Document.pdf      # Your 4-6 page report
+```
+
+
+
+
+
+
